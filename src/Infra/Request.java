@@ -8,7 +8,7 @@ public class Request {
 
     private UriParser uriParser;
 
-    private Request(String uri){
+    Request(String uri){
         this.uriParser = new UriParser(uri);
     }
 
