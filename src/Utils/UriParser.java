@@ -25,7 +25,13 @@ public class UriParser {
 
 
     private void parse(){
-        // /articles/delete ? id=1
+
+        if(!this.URI.startsWith("/")){
+            this.isValid = false;
+            return;
+        }
+
+        // naver.com/articles/delete ? id=1
         String[] uriSplit = this.URI.split("\\?", 2);
         // id = 1
         if(uriSplit.length == 2){
@@ -40,6 +46,11 @@ public class UriParser {
 
         // [], articles , delete
         String[] uriBodySplit = uriSplit[0].split("/");
+
+        if(uriBodySplit.length != 3){
+            this.isValid = false;
+            return;
+        }
 
         this.controllerCode = uriBodySplit[1];
         this.target = uriBodySplit[2];
@@ -57,6 +68,10 @@ public class UriParser {
     }
     public Map<String, Object> getParameter() {
         return parameter;
+    }
+
+    public boolean isValid(){
+        return isValid;
     }
 
 }
