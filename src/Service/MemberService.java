@@ -16,4 +16,7 @@ public class MemberService {
     }
 
 
+    public boolean isExistsByLoginId(String loginId) {
+        return false;
+    }
 }
